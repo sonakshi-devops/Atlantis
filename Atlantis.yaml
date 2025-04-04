@@ -1,0 +1,19 @@
+version: 3
+
+projects:
+  - name: "Atlantis"
+    dir: "."          # Use "." if Terraform files are at the repo root
+    workflow: "default"
+    autoplan:
+      when_modified: ["*.tf", "*.tfvars"]
+      enabled: true
+
+workflows:
+  default:
+    plan:
+      steps:
+        - init
+        - plan
+    apply:
+      steps:
+        - apply
