@@ -1,12 +1,18 @@
 version: 3
 
-workflow: custom-workflow
-workflows:
-  custom-workflow:
-    plan:
-      steps:
-        - run: terraform fmt -check
-        - run: terraform plan
-    apply:
-      steps:
-        - run: terraform apply -auto-approve
+# Configuring the workflow
+workflow:
+  plan:
+    steps:
+      - run: terraform fmt
+      - run: terraform plan
+  apply:
+    steps:
+      - run: terraform apply
+
+# Defining the project with a specific directory and name
+projects:
+  - name: "atlantis-terraform-project"
+    dir: "C:/Users/SharkOps011/Desktop/Atlantis-1/Atlantis"
+    terraform_version: "latest"
+    workflow: "default"
