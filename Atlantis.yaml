@@ -1,9 +1,9 @@
 version: 3
 projects:
   - name: "Atlantis"  # Replace with your actual project name
-    dir: "Atlantis"                    # Directory where your Terraform configuration is located
+    dir: "Atlantis"    # Directory where your Terraform configuration is located
     terraform_version: "1.11.0"
-    workflow: "default"         # This specifies which workflow to use
+    workflow: "default"  # Specifies which workflow to use
 
 workflows:
   default:
@@ -14,3 +14,7 @@ workflows:
     apply:
       steps:
         - apply
+
+server-side-config:
+  allowed_overrides:
+    - workflow
