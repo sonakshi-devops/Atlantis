@@ -1,9 +1,10 @@
 version: 3
 projects:
-  - name: "your-project-name"  # Change this to your actual project name
-    dir: "C:/Users/SharkOps011/Desktop/Atlantis-1/Atlantis"  # Path to your Terraform files
-    terraform_version: "1.1.0"  # Specify the version you want to use
-    workflow: "default"
+  - name: "Atlantis"  # Replace with your actual project name
+    dir: "."                    # Directory where your Terraform configuration is located
+    terraform_version: "latest" # You can specify a specific version like "1.0.0" if needed
+    workflow: "default"         # This specifies which workflow to use
+
 workflows:
   default:
     plan:
