@@ -6,6 +6,6 @@ provider "null" {}
 
 resource "null_resource" "example-1" {
   provisioner "local-exec" {
-    command = "echo alatins1, Atlantis!"
+    command = "echo alatins2, Atlantis!"
   }
 }

@@ -1,16 +1,19 @@
-# atlantis.yaml
-
 version: 3
 
-# Adding 'allowed_overrides' section to enable 'workflow' key in the repo config
-allowed_overrides: [workflow]
+projects:
+  - name: atlantis-project
+    dir: .
+    workflow: custom-workflow
 
-# Optional: Define workflow
-workflow:
-  plan:
-    steps:
-      - run: terraform fmt
-      - run: terraform plan
-  apply:
-    steps:
-      - run: terraform apply
+workflows:
+  custom-workflow:
+    plan:
+      steps:
+        - run: echo "Changed files in last commit:"
+        - run: git show --name-only HEAD
+        - run: terraform fmt
+        - init
+        - plan
+    apply:
+      steps:
+        - apply
