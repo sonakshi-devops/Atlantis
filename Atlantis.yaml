@@ -1,18 +1,15 @@
 version: 3
-
-# Configuring the workflow
-workflow:
-  plan:
-    steps:
-      - run: terraform fmt
-      - run: terraform plan
-  apply:
-    steps:
-      - run: terraform apply
-
-# Defining the project with a specific directory and name
 projects:
-  - name: "atlantis-terraform-project"
-    dir: "C:/Users/SharkOps011/Desktop/Atlantis-1/Atlantis"
+  - name: "Atlantis-1"
+    dir: "C:/Users/SharkOps011/Desktop/Atlantis-1/Atlantis"   # Directory where your Terraform configuration is located
     terraform_version: "latest"
     workflow: "default"
+workflows:
+  default:
+    plan:
+      steps:
+        - init
+        - plan
+    apply:
+      steps:
+        - apply
