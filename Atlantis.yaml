@@ -1,19 +1,16 @@
+# atlantis.yaml
+
 version: 3
 
-projects:
-  - name: "Atlantis"
-    dir: "."          # Use "." if Terraform files are at the repo root
-    workflow: "default"
-    autoplan:
-      when_modified: ["*.tf", "*.tfvars"]
-      enabled: true
+# Adding 'allowed_overrides' section to enable 'workflow' key in the repo config
+allowed_overrides: [workflow]
 
-workflows:
-  default:
-    plan:
-      steps:
-        - init
-        - plan
-    apply:
-      steps:
-        - apply
+# Optional: Define workflow
+workflow:
+  plan:
+    steps:
+      - run: terraform fmt
+      - run: terraform plan
+  apply:
+    steps:
+      - run: terraform apply
