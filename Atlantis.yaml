@@ -1,19 +1,12 @@
 version: 3
 
-projects:
-  - name: atlantis-project
-    dir: .
-    workflow: custom-workflow
-
+workflow: custom-workflow
 workflows:
   custom-workflow:
     plan:
       steps:
-        - run: echo "Changed files in last commit:"
-        - run: git show --name-only HEAD
-        - run: terraform fmt
-        - init
-        - plan
+        - run: terraform fmt -check
+        - run: terraform plan
     apply:
       steps:
-        - apply
+        - run: terraform apply -auto-approve
