@@ -15,6 +15,3 @@ workflows:
       steps:
         - apply
 
-server-side-config:
-  allowed_overrides:
-    - workflow
